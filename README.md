@@ -6,7 +6,7 @@ Add this to your application's `shard.yml`:
 
 ```yaml
 dependencies:
-  config:
+  i18n:
     github: whity/crystal-i18n
 ```
 
