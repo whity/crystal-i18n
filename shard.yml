@@ -1,0 +1,11 @@
+name: i18n
+version: 0.1.0
+
+dependencies:
+  config:
+    github: whity/crystal-config
+
+authors:
+  - André Brás <andregoncalo.bras@gmail.com>
+
+license: MIT
