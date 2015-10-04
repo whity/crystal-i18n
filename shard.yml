@@ -4,6 +4,7 @@ version: 0.1.0
 dependencies:
   config:
     github: whity/crystal-config
+    branch: master
 
 authors:
   - André Brás <andregoncalo.bras@gmail.com>
