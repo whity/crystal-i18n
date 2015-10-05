@@ -1,20 +1,14 @@
 module I18n
     module Backend
-        class Base
+        abstract class Base
             # lookup for the key and return the value
-            def lookup(locale : String, key : String)
-                raise ::I18n::Exceptions::NotImplementedError.new
-            end
+            abstract def lookup(locale : String, key : String)
 
             # available locales
-            def available_locales()
-                raise ::I18n::Exceptions::NotImplementedError.new
-            end
+            abstract def available_locales()
 
             # load locales
-            def load()
-                raise ::I18n::Exceptions::NotImplementedError.new
-            end
+            abstract def load()
 
             # return number formats
             def number(locale : String)
