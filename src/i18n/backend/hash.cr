@@ -1,5 +1,6 @@
 require "yaml"
 require "config/hash"
+require "../../i18n"
 require "../backend"
 
 
@@ -31,5 +32,9 @@ module I18n
                 return @_data.to_h.keys
             end
         end
+    end
+
+    def from_hash(default_locale : String, data : ::Hash)
+        return self.new_object(default_locale, Backend::Hash.new(data))
     end
 end

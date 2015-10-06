@@ -14,14 +14,10 @@ dependencies:
 
 
 ```crystal
-require "i18n"
 require "i18n/backend/yaml"
 
-# create a backend object
-backend = I18n::Backend::Yaml.new("[folder where the locales files are located]")
-
-# create the i18n object
-i18n = I18n.new_object("[default locale]", backend)
+# create a i18n object
+i18n = I18n.from_yaml_files("[folder where the locale files are located]")
 
 # simple translation
 i18n.translate("hello")

@@ -35,4 +35,8 @@ module I18n
             end
         end
     end
+
+    def from_yaml_files(default_locale : String, folder : String)
+        return self.new_object(default_locale, Backend::YAML.new(folder))
+    end
 end
