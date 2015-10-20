@@ -1,9 +1,9 @@
 require "./i18n/*"
 
 module I18n
-    extend self
+  extend self
 
-    def new_object(default_locale, backend)
-        return I18n.new(default_locale, backend)
-    end
+  def new_object(default_locale, backend)
+    return I18n.new(default_locale, backend)
+  end
 end
