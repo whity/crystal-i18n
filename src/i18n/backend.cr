@@ -8,7 +8,7 @@ module I18n
       abstract def available_locales
 
       # load locales
-      abstract def load
+      abstract def load(data : ::Hash)
 
       # return number formats
       def number(locale : String)

@@ -7,11 +7,11 @@ module I18n
   module Backend
     class Hash < Base
       # constructor
-      def initialize(data = {} of String => String : ::Hash)
+      def initialize(data = {} of String => String)
         @_data = ::Config::Hash.new(data)
       end
 
-      def load(data : ::Hash)
+      def load(data)
         @_data = ::Config::Hash.new(data)
 
         return self

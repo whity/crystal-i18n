@@ -26,7 +26,7 @@ module I18n
       return self
     end
 
-    def translate(key, locale = @default_locale : String, count = 0 : Int)
+    def translate(key, locale : String = @default_locale, count : Int = 0 )
       result = @_backend.lookup(locale, key)
       if (!result)
         return key
@@ -86,17 +86,17 @@ module I18n
       return
     end
 
-    def date(value, locale = @default_locale : String, format = "default" : String)
+    def date(value, locale : String = @default_locale, format : String = "default")
       formats = @_backend.date(locale)
       return self._date_time(value, locale, formats, format, :date)
     end
 
-    def time(value, locale = @default_locale : String, format = "default" : String)
+    def time(value, locale : String = @default_locale, format : String = "default")
       formats = @_backend.time(locale)
       return self._date_time(value, locale, formats, format, :time)
     end
 
-    def currency(value : String, locale = @default_locale : String)
+    def currency(value : String, locale : String = @default_locale)
       # convert value to string
       value = value.to_s
 
@@ -120,7 +120,7 @@ module I18n
       return sprintf(format, value)
     end
 
-    def number(value : String, locale = @default_locale : String)
+    def number(value : String, locale : String = @default_locale)
       # get number definitions from backend
       nbr_formats = @_backend.number(locale)
 
