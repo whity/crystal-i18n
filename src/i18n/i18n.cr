@@ -26,7 +26,7 @@ module I18n
       return self
     end
 
-    def translate(key, locale : String = @default_locale, count : Int = 0 )
+    def translate(key, locale : String = @default_locale, count : Int = 0)
       result = @_backend.lookup(locale, key)
       if (!result)
         return key
@@ -131,12 +131,12 @@ module I18n
       # get decimal separator
       dec_separator = nbr_formats.fetch("decimal_separator", ".") as String
       if (dec_separator)
-        value = value.sub(/\./, dec_separator)
+        value = value.sub(Regex.new("\\."), dec_separator)
       end
 
       # ## set precision separator ###
       # split by decimal separator
-      match = value.match(/(\d+)#{dec_separator}?(\d+)?/i)
+      match = value.match(Regex.new("(\\d+)#{dec_separator}?(\\d+)?", Regex::Options::IGNORE_CASE))
       if (!match)
         return value
       end
@@ -165,7 +165,6 @@ module I18n
       if (decimal)
         value += dec_separator + decimal
       end
-      # ##
 
       return value
     end
