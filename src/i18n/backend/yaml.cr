@@ -25,9 +25,10 @@ module I18n
         data = ::Hash(String, ::YAML::Type).new
         files = Dir.glob("#{@_folder}/*.yml")
         files.each do |file|
-          lang = file.match(/\/([^\/]*)\.\w*$/i) as Regex::MatchData
-          lang_data = ::YAML.load(File.open(file).gets_to_end)
-          data[lang[1]] = lang_data
+          lang = File.basename(file, ".yml")
+          # lang = file.match(/\/([^\/]*)\.\w*$/i) as Regex::MatchData
+          lang_data = ::YAML.parse(File.read(file))
+          data[lang] = lang_data.as_h
         end
 
         return super(data)
