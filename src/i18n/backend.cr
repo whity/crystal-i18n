@@ -40,7 +40,7 @@ module I18n
           hash = ::Hash(String, String).new
         end
 
-        return hash as ::Hash
+        return hash.as(::Hash)
       end
     end
   end

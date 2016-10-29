@@ -36,7 +36,7 @@ module I18n
         return result
       end
 
-      result = result as Hash
+      result = result.as(Hash)
 
       # ##if result is a 'hash' and we passed 'count', check for the right message to return
       if (count <= 0)
@@ -59,7 +59,7 @@ module I18n
         if (!match)
           next
         end
-        match = match as Regex::MatchData
+        match = match.as(Regex::MatchData)
 
         # if end isn't defined, just check if count is bigger or equal than start
         range_end = match[2]?
@@ -111,7 +111,7 @@ module I18n
       value = self.number(value, locale)
 
       # get format
-      format = currency_formats.fetch("format", "") as String
+      format = currency_formats.fetch("format", "").as(String)
       if (format.size == 0)
         return value
       end
@@ -129,7 +129,7 @@ module I18n
       end
 
       # get decimal separator
-      dec_separator = nbr_formats.fetch("decimal_separator", ".") as String
+      dec_separator = nbr_formats.fetch("decimal_separator", ".").as(String)
       if (dec_separator)
         value = value.sub(Regex.new("\\."), dec_separator)
       end
@@ -140,12 +140,12 @@ module I18n
       if (!match)
         return value
       end
-      match = match as Regex::MatchData
+      match = match.as(Regex::MatchData)
 
       integer = match[1]
       decimal = match[2]?
 
-      precision_separator = nbr_formats.fetch("precision_separator", "") as String
+      precision_separator = nbr_formats.fetch("precision_separator", "").as(String)
       new_value = ""
       counter = 0
       index = integer.size - 1
@@ -182,7 +182,7 @@ module I18n
         # TODO: display formats not defined, log it
         return value
       end
-      display_formats = display_formats as Hash
+      display_formats = display_formats.as(Hash)
 
       # check if type format exists
       if (!display_formats[type])
@@ -191,23 +191,23 @@ module I18n
       end
 
       # translate text value
-      format = display_formats[type] as String
+      format = display_formats[type].as(String)
 
       # if the caller method was 'date', do the replace, otherwise ignore it
       if (date_or_time == :date)
         format = format.gsub(/%[aAbB]/) do |match|
           replace = nil
           if (match == "%a")
-            abbr_day_names = formats["abbr_day_names"] as Array
+            abbr_day_names = formats["abbr_day_names"].as(Array)
             replace = abbr_day_names[value.day_of_week.to_i]
           elsif (match == "%A")
-            day_names = formats["day_names"] as Array
+            day_names = formats["day_names"].as(Array)
             replace = day_names[value.day_of_week.to_i]
           elsif (match == "%b")
-            abbr_month_names = formats["abbr_month_names"] as Array
+            abbr_month_names = formats["abbr_month_names"].as(Array)
             replace = abbr_month_names[value.month]
           elsif (match == "%B")
-            month_names = formats["month_names"] as Array
+            month_names = formats["month_names"].as(Array)
             replace = month_names[value.month]
           end
 
